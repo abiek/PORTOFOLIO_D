@@ -1,0 +1,951 @@
+/* --- Global Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #f0f0f0;
+    overflow-x: hidden;
+    color: #fff; /* Teks default putih agar terlihat di background laut */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.text-white { color: #fff; }
+.text-uppercase { text-transform: uppercase; }
+.font-weight-bold { font-weight: bold; }
+.mt-4 { margin-top: 1rem; }
+.mt-5 { margin-top: 2rem; }
+.ml-5 { margin-left: 2rem; }
+.mb-3 { margin-bottom: 1rem; }
+.mb-4 { margin-bottom: 1.5rem; }
+.mb-5 { margin-bottom: 3rem; }
+.text-center { text-align: center; }
+.d-flex { display: flex; }
+.justify-content-between { justify-content: space-between; }
+.align-items-center { align-items: center; }
+
+/* --- Tema "Ocean Blue" --- */
+:root {
+    --primary-color: #007bff; /* Biru laut cerah untuk tombol */
+    --text-color-light: #fff;
+}
+
+/* BAGIAN INI YANG DIPERBAIKI */
+.background-ocean {
+    position: fixed; /* Mengunci background agar tidak ikut terscroll */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Lebar penuh layar */
+    height: 100vh; /* Tinggi penuh layar */
+    background-image: url('../img/background_ocean.png'); /* Sesuai format Anda */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.9;
+    z-index: -1;
+}
+
+/* --- Halaman Sections --- */
+.section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-wrapper {
+    display: flex;
+    max-width: 1000px;
+    width: 100%;
+    flex-direction: column;
+}
+
+/* --- Header --- */
+header {
+    background: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 20px 0;
+}
+
+header .nav-item {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+header .logo-img {
+    max-height: 60px;
+}
+
+.page-indicator {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 5px;
+    letter-spacing: 1px;
+}
+.z-10 { z-index: 10; }
+
+/* =========================================
+   JUDUL DI BAWAH LOGO ITS (HEADER)
+========================================= */
+.header-page-title {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Animasi turun halus */
+    animation: fadeInDownHeader 0.8s ease forwards;
+}
+
+.header-page-title .title-text {
+    font-size: 35px;
+    font-weight: 600;
+    letter-spacing: 7px; /* Teks renggang elegan */
+    color: #fff;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.header-page-title .title-line {
+    width: 0; /* Mulai dari 0 untuk efek animasi */
+    height: 2px;
+    background: #fff;
+    margin-top: 4px;
+    border-radius: 2px;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8); /* Efek bercahaya */
+    animation: expandLineHeader 1s ease forwards 0.5s;
+}
+
+@keyframes fadeInDownHeader {
+    0% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes expandLineHeader {
+    0% { width: 0; }
+    100% { width: 300px; } /* Lebar garis bawah */
+}
+/* =========================================
+   STYLE KHUSUS HALAMAN HOME (DESAIN RESMI + ANIMASI)
+========================================= */
+
+/* Judul PORTOFolio */
+#home .logo-title {
+    font-size: 5.5rem;
+    color: #fff;
+    border-bottom: 3px solid #fff; /* Garis putih di bawah judul */
+    display: inline-block;
+    padding-bottom: 15px;
+    letter-spacing: 4px;
+}
+
+.text-italic {
+    font-style: italic;
+    font-weight: 300;
+}
+
+/* Info Profil */
+#home .profile-info .name {
+    font-size: 1.3rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+#home .profile-info .prodi {
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* 4 Tombol Oval */
+#home .sub-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+#home .btn-outlined {
+    border: 1px solid #fff;
+    border-radius: 50px;
+    padding: 10px 30px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    background-color: transparent;
+}
+
+#home .btn-outlined:hover {
+    background-color: #fff;
+    color: #007bff;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Let's Present Animasi Memantul (Bouncing) */
+.bounce-down {
+    font-size: 2rem;
+    animation: bounceDownAnim 2s infinite;
+}
+
+@keyframes bounceDownAnim {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(15px); }
+    60% { transform: translateY(7px); }
+}
+
+/* Animasi Masuk Halaman */
+.fade-in-up-home {
+    animation: fadeInUpHome 1.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    opacity: 0;
+    transform: translateY(60px);
+}
+
+@keyframes fadeInUpHome {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Ikon Sosmed Melompat */
+.home-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.home-icon {
+    color: #fff;
+    font-size: 1.5rem;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.home-icon:hover {
+    background-color: #fff;
+    color: #007bff;
+    transform: translateY(-10px) scale(1.1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    border-color: #fff;
+}
+
+/* =========================================
+   ANIMASI GELOMBANG AIR LAUT (WAVES)
+========================================= */
+.ocean-waves {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 12vh;
+    min-height: 80px;
+    max-height: 150px;
+    z-index: 5;
+}
+
+.waves {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-bottom: -7px;
+}
+
+.parallax > use { animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite; }
+.parallax > use:nth-child(1) { animation-delay: -2s; animation-duration: 7s; }
+.parallax > use:nth-child(2) { animation-delay: -3s; animation-duration: 10s; }
+.parallax > use:nth-child(3) { animation-delay: -4s; animation-duration: 13s; }
+.parallax > use:nth-child(4) { animation-delay: -5s; animation-duration: 20s; }
+
+@keyframes move-forever {
+    0% { transform: translate3d(-90px,0,0); }
+    100% { transform: translate3d(85px,0,0); }
+}
+
+/* =========================================
+   STYLE UNTUK HALAMAN INTRODUCTION 
+========================================= */
+
+/* --- DIPERBAIKI: Padding yang sangat longgar di bawah dan samping agar anti-kepotong --- */
+.intro-container.super-padd { 
+    padding-top: 150px; 
+    padding-bottom: 250px; /* Jarak bawah diperbesar untuk alat besar */
+    padding-left: 50px;    /* Jarak samping kiri longgar */
+    padding-right: 50px;   /* Jarak samping kanan longgar */
+    width: 100%; 
+    /* overflow dihapus total di sini! */
+}
+
+/* --- Section 1: Top Profil --- */
+.intro-top { margin-bottom: 100px; }
+.intro-top h1 { font-size: 4.5rem; line-height: 1.1; margin-right: 30px;} /* Beri jarak teks dari foto */
+.intro-text p { font-size: 1.2rem; line-height: 1.6; max-width: 500px; }
+
+.photo-frame-new { 
+    width: 320px; height: 320px; /* Ukuran diseimbangkan */
+    border: 3px dashed #fff; border-radius: 50%; padding: 15px; 
+    display: flex; justify-content: center; align-items: center; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    /* Animasi mengambang untuk foto profil */
+    animation: floatProfile 6s ease-in-out infinite;
+}
+.photo-frame-new img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+
+/* --- Section 2: Kelebihan (Glassmorphism & Teks Rapi) --- */
+.intro-middle { margin-top: 50px; margin-bottom: 100px; }
+.intro-middle h2 { font-size: 3.2rem; }
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.15); 
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px; padding: 30px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+}
+
+.kelebihan-card { 
+    width: 31%; /* Lebar kotak dikecilkan dikit agar ada ruang antar kotak */
+    text-align: left; 
+    min-height: 200px; 
+    z-index: 10; 
+}
+.kelebihan-card h4 { font-size: 1.4rem; }
+.kelebihan-card p { font-size: 1rem; line-height: 1.5; font-weight: 500;}
+
+/* --- Section 3: CV (PDF File) --- */
+.intro-bottom { margin-top: 150px; padding-top: 50px;} /* Beri jarak atas CV */
+.cv-container { max-width: 900px; margin: 0 auto; padding: 20px; z-index: 10; position: relative; }
+.btn-download { display: inline-block; background-color: #fff; color: var(--primary-color, #007bff); padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: 0.3s; }
+.btn-download:hover { background-color: #e0e0e0; transform: scale(1.05); }
+
+/* --- Alat Dekorasi (Absolute Positioning dengan Koordinat Baru) --- */
+.relative { position: relative; }
+.tool-deco { position: absolute; z-index: 20; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));}
+
+/* DIPERBAIKI: Koordinat baru agar tidak menabrak teks dan anti-kepotong */
+.tool-1-new { bottom: -45px; right: -70px; width: 110px; } /* Alat Kuning */
+.tool-2-new { bottom: -35px; right: -50px; width: 150px; } /* Alat Oranye */
+.tool-bottom-left-new { bottom: -120px; left: -70px; width: 250px; } /* Alat GNSS Besar */
+.tool-bottom-right-new { bottom: -120px; right: -70px; width: 200px; } /* Alat TS Besar */
+
+/* =========================================
+   ANIMASI BARU (LUCU & SUPER BOUNCY)
+========================================= */
+
+/* 1. Animasi Masuk Utama (Fade In Up) */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 1s cubic-bezier(0.23, 1, 0.32, 1); /* Halus tapi membal dikit */
+}
+.fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Jeda masuk (stagger) */
+.delay-2 { transition-delay: 0.3s; }
+.delay-3 { transition-delay: 0.6s; }
+
+/* 2. Animasi POP-UP (Super Lucu & Membal untuk Kotak) */
+.pop-up-anim {
+    opacity: 0;
+    transform: scale(0.3); /* Muncul dari kecil banget */
+    /* Transisi membal EXTREME cubic-bezier */
+    transition: all 0.8s cubic-bezier(0.68, -0.6, 0.27, 1.8);
+}
+.pop-up-anim.visible {
+    opacity: 1;
+    transform: scale(1); /* Jadi ukuran normal */
+}
+
+/* 3. Animasi Loop Non-Stop (Ceria) */
+
+/* Foto Profil Mengambang Naik-Turun Pelan */
+@keyframes floatProfile {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Alat Kuning Melompat Ceria */
+.jumps-kuning { animation: jumpsHappy 3s ease-in-out infinite; transform-origin: center; }
+/* Alat Oranye Melompat Ceria dengan Delay */
+.jumps-oranye { animation: jumpsHappy 3s ease-in-out infinite 0.5s; transform-origin: center; }
+
+@keyframes jumpsHappy {
+    0%, 100% { transform: translateY(0) scale(1) rotate(0deg); }
+    50% { transform: translateY(-15px) scale(1.05) rotate(5deg); } /* Lompat, membesar dikit, miring */
+}
+
+/* Alat Besar di Bawah CV: Terayun-ayun Pelan (Swing) */
+.tool-swing-1 { animation: swingSlow 5s ease-in-out infinite; transform-origin: bottom center; }
+.tool-swing-2 { animation: swingSlow 4.5s ease-in-out infinite 1s; transform-origin: bottom center; }
+
+@keyframes swingSlow {
+    0%, 100% { transform: rotate(-4deg); }
+    50% { transform: rotate(4deg); }
+}
+
+/* =========================================
+   STYLE UNTUK HALAMAN SKILLS 
+========================================= */
+
+.skills-wrapper-anim {
+    padding-top: 150px;
+    padding-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 80px; /* Jarak antara Hard dan Soft Skills */
+}
+
+/* Tata letak grid untuk memastikan teks dan gambar selalu rapi */
+.skill-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.skill-text-box {
+    flex: 1.2;
+    padding: 40px;
+    position: relative;
+    z-index: 10;
+}
+
+.skill-img-box {
+    flex: 0.8;
+    display: flex;
+    justify-content: center;
+    z-index: 5;
+}
+
+/* Style Teks */
+.skill-headline {
+    font-size: 5rem;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin-bottom: 15px;
+}
+
+.year-badge-inline {
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.7);
+    vertical-align: top;
+    margin-left: 10px;
+}
+
+.skill-divider {
+    border: 0;
+    height: 3px;
+    background: #fff;
+    width: 80px;
+    margin-bottom: 25px;
+}
+
+.right-divider {
+    margin-left: auto; /* Agar garisnya pindah ke kanan */
+}
+
+.skill-list-clean {
+    list-style: none;
+    padding: 0;
+}
+
+.skill-list-clean li {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+/* Gambar Alat */
+.skill-img-box img {
+    max-width: 250px;
+    height: auto;
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.4)); /* Memberi bayangan agar terlihat 3D nyata */
+}
+
+
+/* =========================================
+   EFEK ANIMASI (KEYFRAMES)
+========================================= */
+
+/* 1. Animasi Masuk (Entry Animations) */
+.fade-in-left {
+    animation: fadeInLeft 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+}
+
+.fade-in-right {
+    animation: fadeInRight 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+}
+
+.slide-in-right {
+    animation: slideInRight 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+}
+
+.slide-in-left {
+    animation: slideInLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+}
+
+/* 2. Animasi Melayang Non-Stop (Floating) */
+/* Gambar akan melayang setelah animasi masuk selesai */
+.floating-tool {
+    animation: floatAnim 4s ease-in-out infinite;
+    transform-origin: center;
+}
+
+/* Delay agar naiknya tidak berbarengan (terlihat lebih natural) */
+.floating-tool-delayed {
+    animation: floatAnim 4s ease-in-out infinite 2s; 
+    transform-origin: center;
+}
+
+/* -- Definisi Keyframes -- */
+@keyframes fadeInLeft {
+    0% { opacity: 0; transform: translateX(-80px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+    0% { opacity: 0; transform: translateX(80px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    0% { opacity: 0; transform: translateX(100px) rotate(30deg); }
+    100% { opacity: 1; transform: translateX(0) rotate(10deg); } /* Berhenti dalam keadaan miring */
+}
+
+@keyframes slideInLeft {
+    0% { opacity: 0; transform: translateX(-100px) rotate(-30deg); }
+    100% { opacity: 1; transform: translateX(0) rotate(-10deg); } /* Berhenti dalam keadaan miring */
+}
+
+@keyframes floatAnim {
+    0% { transform: translateY(0px) rotate(10deg); }
+    50% { transform: translateY(-25px) rotate(12deg); } /* Melayang naik */
+    100% { transform: translateY(0px) rotate(10deg); }
+}
+
+/* =========================================
+   STYLE UNTUK HALAMAN PROJECTS 
+========================================= */
+
+.projects-container {
+    padding-top: 150px;
+    padding-bottom: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 120px; /* Jarak antar proyek yang besar */
+    overflow: hidden; /* Mencegah layar bergeser ke samping karena animasi */
+}
+
+/* --- Pengaturan Baris Kiri & Kanan --- */
+.project-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    width: 100%;
+    opacity: 0; /* Disembunyikan dulu sebelum di-scroll */
+}
+
+/* Jika text di Kanan */
+.project-row.align-right {
+    flex-direction: row-reverse; /* Membalik susunan (Teks dikanan, PDF dikiri) */
+}
+
+.project-row.align-right .project-text {
+    text-align: right;
+}
+
+/* Jika text di Kiri */
+.project-row.align-left .project-text {
+    text-align: left;
+}
+
+/* --- Teks Typography --- */
+.project-text {
+    flex: 1; /* Mengambil ruang fleksibel */
+}
+
+.project-text h2 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    line-height: 1.1;
+    letter-spacing: -1px;
+}
+
+.project-text p {
+    font-size: 1.3rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+/* --- Kotak PDF Kaca --- */
+.project-pdf {
+    flex: 1;
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.project-pdf iframe {
+    width: 100%;
+    height: 250px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.5); /* Warna dasar jika PDF loading */
+}
+
+.btn-download-sm {
+    display: inline-block;
+    background-color: #fff;
+    color: var(--primary-color, #007bff);
+    padding: 8px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.btn-download-sm:hover {
+    background-color: #e0e0e0;
+}
+
+/* --- EFEK ANIMASI SCROLL --- */
+/* Elemen di kanan meluncur dari kanan */
+.align-right.scroll-anim {
+    transform: translateX(100px);
+    transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Elemen di kiri meluncur dari kiri */
+.align-left.scroll-anim {
+    transform: translateX(-100px);
+    transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Class 'visible' ditambahkan otomatis oleh JavaScript saat terscroll */
+.scroll-anim.visible {
+    opacity: 1;
+    transform: translateX(0); /* Kembali ke posisi semula */
+}
+
+/* Memastikan panah navigasi tetap berada di tempat walau di-scroll */
+.fixed-arrow {
+    position: fixed;
+    z-index: 1000;
+}
+.mt-3 { margin-top: 1rem; }
+.mr-2 { margin-right: 0.5rem; }
+
+/* =========================================
+   STYLE UNTUK HALAMAN CONTACT 
+========================================= */
+
+.contact-container {
+    min-height: 100vh;
+    padding-top: 150px;
+    padding-bottom: 100px;
+}
+
+.thank-you-text {
+    font-size: 7rem; /* Ukuran sangat besar sesuai desain */
+    font-weight: 800;
+    margin-bottom: 60px;
+    text-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    text-align: center;
+    letter-spacing: -2px;
+}
+
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Jarak antar ikon kontak */
+    max-width: 600px;
+    width: 100%;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+/* Efek saat mouse diarahkan ke kontak (akan bergeser sedikit ke kanan) */
+.contact-item:hover {
+    transform: translateX(15px);
+}
+
+.contact-icon {
+    font-size: 4.5rem; /* Ukuran ikon membesar */
+    margin-right: 30px;
+    width: 80px;
+    text-align: center;
+    text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.contact-emails {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.contact-link {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+}
+
+/* Efek garis bawah (underline) muncul saat di-hover */
+.contact-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -5px;
+    left: 0;
+    background-color: #fff;
+    transition: width 0.3s ease;
+}
+
+.contact-item:hover .contact-link::after,
+.contact-link:hover::after {
+    width: 100%;
+}
+
+/* --- ANIMASI CONTACT --- */
+.slide-up-anim {
+    animation: slideUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+    transform: translateY(80px);
+}
+
+.fade-in-anim {
+    animation: fadeInContact 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+    transform: translateX(-40px);
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInContact {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (KHUSUS HP & TABLET)
+   Pastikan kode ini berada di PALING BAWAH file style.css
+========================================= */
+
+@media (max-width: 768px) {
+    /* 1. GLOBAL & BACKGROUND */
+    body, html { 
+        overflow-x: hidden; /* Cegah layar bisa digeser ke kiri/kanan di HP */
+    }
+
+    /* Tambahan Mobile untuk Home Baru */
+    #home .logo-title { font-size: 3rem; letter-spacing: 2px; }
+    #home .profile-info .name { font-size: 1rem; }
+    #home .profile-info .prodi { font-size: 0.8rem; }
+    #home .btn-outlined { padding: 8px 20px; font-size: 0.8rem; }
+    .ocean-waves { height: 8vh; min-height: 50px; }
+    
+    /* Tambahan Mobile untuk Home */
+    #home .logo-title { font-size: 3.5rem; }
+    .home-icon { width: 45px; height: 45px; font-size: 1.5rem; }
+    .ocean-waves { height: 10vh; min-height: 60px; }
+
+    .background-ocean {
+        /* Fix background agar tidak zoom atau rusak di HP */
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        width: 100%; height: 100%;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .container { 
+        padding-left: 20px !important; 
+        padding-right: 20px !important; 
+    }
+
+    /* 2. HEADER & NAVIGASI PANAH */
+    header { padding: 15px 0; }
+    .logo-img { max-height: 45px; }
+    .nav-item { font-size: 0.9rem; }
+    .page-indicator { font-size: 0.8rem; }
+    
+    .nav-arrow { 
+        width: 45px; height: 45px; font-size: 18px; 
+        top: auto; bottom: 20px; /* Pindah ke bawah agar mudah diklik jempol */
+        transform: none; 
+    }
+    .nav-arrow:hover { transform: scale(1.1); }
+    .left-arrow { left: 20px; }
+    .right-arrow { right: 20px; }
+
+    /* 3. HALAMAN INTRODUCTION */
+    .intro-container.super-padd {
+        /* Hapus jarak raksasa dari versi desktop */
+        padding: 120px 20px 100px 20px !important; 
+    }
+    
+    .intro-top { 
+        flex-direction: column-reverse; /* Foto di atas, Teks di bawah */
+        text-align: center; 
+        margin-bottom: 50px; 
+    }
+    .intro-top h1 { font-size: 3rem; margin-right: 0; margin-top: 20px; }
+    .intro-text p { font-size: 1rem; margin: 0 auto; }
+    
+    .photo-frame-new { 
+        width: 220px; height: 220px; /* Foto dikecilkan */
+        margin: 0 auto; 
+    }
+
+    .intro-middle { margin-top: 20px; margin-bottom: 50px; }
+    .intro-middle h2 { font-size: 2.5rem; }
+    
+    .kelebihan-wrapper { 
+        flex-direction: column; /* Kotak jadi atas-bawah */
+        gap: 30px; 
+    }
+    .kelebihan-card { width: 100%; min-height: auto; }
+    
+    /* SEMBUNYIKAN dekorasi alat di HP agar bersih dan tidak berantakan */
+    .tool-deco { display: none !important; }
+
+    .intro-bottom { margin-top: 50px; padding-top: 20px; }
+    .cv-container iframe { height: 400px; } /* PDF tidak terlalu panjang di HP */
+
+    /* 4. HALAMAN SKILLS */
+    .skills-wrapper-anim { 
+        padding-top: 120px; padding-bottom: 100px; 
+        gap: 50px; 
+    }
+    .skill-row { 
+        flex-direction: column !important; 
+        text-align: center !important; 
+        gap: 30px; 
+    }
+    .skill-headline { font-size: 3rem; margin-bottom: 10px; }
+    .skill-text-box { padding: 25px; width: 100%; }
+    .skill-text-box ul { text-align: center !important; }
+    .skill-divider { margin: 15px auto !important; } /* Garis di tengah */
+    .skill-list-clean li { font-size: 1rem; }
+    
+    .skill-img-box img { max-width: 180px; }
+
+    /* 5. HALAMAN PROJECTS */
+    .projects-container { 
+        padding-top: 120px; padding-bottom: 100px; 
+        gap: 60px; 
+    }
+    .project-row { 
+        flex-direction: column !important; /* Teks di atas, PDF di bawah */
+        gap: 20px; text-align: center; 
+    }
+    .project-row.align-right .project-text, 
+    .project-row.align-left .project-text { 
+        text-align: center; /* Paksa teks ke tengah di HP */
+    }
+    .project-text h2 { font-size: 2.2rem; }
+    .project-text p { font-size: 0.9rem; letter-spacing: 1px; }
+    
+    .project-pdf { padding: 15px; }
+    .project-pdf iframe { height: 250px; }
+
+    /* Memperbaiki arah animasi masuk agar tidak terlalu jauh */
+    .align-right.scroll-anim { transform: translateY(40px); }
+    .align-left.scroll-anim { transform: translateY(40px); }
+    .scroll-anim.visible { transform: translateY(0); }
+
+    /* 6. HALAMAN CONTACT */
+    .contact-container { padding-top: 120px; padding-bottom: 100px; }
+    .thank-you-text { font-size: 3.5rem; margin-bottom: 40px; }
+    .contact-list { gap: 30px; }
+    .contact-item { justify-content: center; text-align: center; flex-direction: column; }
+    .contact-icon { font-size: 3rem; margin-right: 0; margin-bottom: 10px; }
+    .contact-link { font-size: 1.1rem; word-break: break-all; } /* Cegah email panjang merusak layar */
+    .contact-emails { align-items: center; }
+}
+
+/* =========================================
+   NAVIGASI PANAH (BACK & NEXT)
+========================================= */
+.nav-arrow {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.9); /* Putih sedikit transparan / efek kaca */
+    color: #007bff; /* Ikon warna biru */
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 24px;
+    z-index: 1000;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* Efek animasi membesar dan bercahaya biru saat disentuh */
+.nav-arrow:hover {
+    background-color: #fff;
+    transform: translateY(-50%) scale(1.15); 
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.5); 
+    color: #0056b3;
+}
+
+.left-arrow { left: 40px; }
+.right-arrow { right: 40px; }
